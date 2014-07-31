@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		id="gntikos.plugin.valueselector" 
+		version="0.0.1" >
+
+    <name>valueSelector</name>
+    <description>Empty description</description>
+    <author>gntikos (Giorgos Siantikos)</author>
+    <keywords></keywords>
+    <license>Apache 2.0 license</license>
+
+    <js-module src="www/valueSelector.js" name="valueSelector">
+        <clobbers target="valueSelector" />
+    </js-module>
+    
+    <platform name="android">
+		<source-file src="src/android/ValueSelector.java" target-dir="src/gntikos/plugin/valueselector" />
+        <source-file src="layout/selector.xml" target-dir="res/layout"/>
+        
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="ValueSelector">
+                <param name="android-package" value="gntikos.plugin.valueselector.ValueSelector" />
+            </feature>
+        </config-file>
+        
+    </platform>
+</plugin>
