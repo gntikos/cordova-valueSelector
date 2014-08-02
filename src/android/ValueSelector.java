@@ -1,6 +1,6 @@
 package gntikos.plugin.valueselector;
 
-import io.cordova.hellocordova.R;
+import me.init.demo.R;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaInterface;
