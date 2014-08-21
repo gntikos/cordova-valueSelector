@@ -1,7 +1,5 @@
 package gntikos.plugin.valueselector;
 
-import me.init.demo.R;
-
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CordovaPlugin;
@@ -12,13 +10,14 @@ import org.json.JSONObject;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.content.res.Resources;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
 public class ValueSelector extends CordovaPlugin  {
-
+  
 	// ---------- Variables ----------
 	public String dialogTitle;
 	private final String DEFAULT_TITLE = "Select Value";
@@ -55,10 +54,13 @@ public class ValueSelector extends CordovaPlugin  {
 	
 	private synchronized void selectFromRange(int initVal, final JSONObject params, final CallbackContext callbackContext) throws JSONException {
 		final CordovaInterface cordova  = this.cordova;
-		
-		final View view = this.cordova.getActivity().getLayoutInflater().inflate(R.layout.selector,  null);
-		final SeekBar bar = (SeekBar) view.findViewById(R.id.theSeekBar);
-		final TextView valueText = (TextView) view.findViewById(R.id.valueText);
+      
+		Resources resources = cordova.getActivity().getApplication().getResources();
+        String package_name = cordova.getActivity().getApplication().getPackageName();
+      
+		final View view = cordova.getActivity().getLayoutInflater().inflate(resources.getIdentifier("selector", "layout", package_name), null);
+		final SeekBar bar = (SeekBar) view.findViewById(resources.getIdentifier("theSeekBar", "id", package_name));
+		final TextView valueText = (TextView) view.findViewById(resources.getIdentifier("valueText", "id", package_name));
 
 		final int step = params.getInt("step");
 		
